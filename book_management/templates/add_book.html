@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Book</title>
+  </head>
+  <body>
+    <form method="POST" action="/add">
+      {% csrf_token %}
+      <div>
+        <br>
+        <p>
+          <h3>Enter Book details</h3>
+        </p>
+        <div>
+          <p>Book Name:</p>{{ form.name }}
+        </div>
+        <div>
+          <p>Book Author:</p>{{ form.author }}
+        </div>
+        <div>
+          <p>Book Genre:</p>{{ form.genre }}
+        </div>
+        <div>
+          <p>Book Publisher:</p>{{ form.publisher }}
+        </div>
+        <div>
+          <p>Book Release Year:</p>{{ form.release_year }}
+        </div>
+        <div>
+          <br>
+          <button type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

@@ -16,6 +16,6 @@ def manage_form(request):
         messages.error(request, "Invalid year. Please enter a year between 0 and the current year.")
       except:
         pass
-    else:
-      form = BookForm()
-    return render(request, 'index.html', {'form':form})
+  else:
+    form = BookForm()
+  return render(request, 'add_book.html', {'form':form})

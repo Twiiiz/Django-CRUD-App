@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Book Records</title>
+  </head>
+  <body>
+    {% if records == True %}
+    <table>
+      <thead>
+        <tr>
+          <th>Book Id</th>
+          <th>Book Name</th>
+          <th>Book Author</th>
+          <th>Book Genre</th>
+          <th>Book Publisher</th>
+          <th>Book Release Year</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in books %}
+        <tr>
+          <td>{{ book.id }}</td>
+          <td>{{ book.name }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.genre }}</td>
+          <td>{{ book.publisher }}</td>
+          <td>{{ book.release_year }}</td>
+          <td>
+            <a href="edit/{{ book.id }}">Edit</a>
+            <a href="delete/{{ book.id }}">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <h2>There are no Book Records Yet</h2>
+    {% endif %}
+    <br />
+    <button>
+      <a href="/add">Add Record</a>
+    </button>
+  </body>
+</html>

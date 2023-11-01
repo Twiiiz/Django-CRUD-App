@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit</title>
+  </head>
+  <body>
+    <form method="POST" action="/update/{{ book.id }}">
+      {% csrf_token %}
+      <div>
+        <p>Update Book Details</p>
+      </div>
+      <div>
+        <p>Book Name:</p>
+        <input type="text" name="book_name" value="{{ book.name }}" />
+      </div>
+      <div>
+        <p>Book Author:</p>
+        <input type="text" name="book_author" value="{{ book.author }}" />
+      </div>
+      <div>
+        <p>Book Genre:</p>
+        <input type="text" name="book_genre" value="{{ book.genre }}" />
+      </div>
+      <div>
+        <p>Book Publisher:</p>
+        <input type="text" name="book_publisher" value="{{ book.publisher }}" />
+      </div>
+      <div>
+        <p>Book Release Year:</p>
+        <input type="number" name="book_release_year" value="{{ book.release_year }}" />
+      </div>
+      {% if messages %} {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %} {% endif %}
+      <br />
+      <input type="submit" value="Confirm" />
+    </form>
+  </body>
+</html>

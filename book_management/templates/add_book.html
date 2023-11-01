@@ -6,33 +6,12 @@
     <title>Add Book</title>
   </head>
   <body>
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %} {% endif %}
     <form method="POST" action="/add">
-      {% csrf_token %}
-      <div>
-        <br>
-        <p>
-          <h3>Enter Book details</h3>
-        </p>
-        <div>
-          <p>Book Name:</p>{{ form.name }}
-        </div>
-        <div>
-          <p>Book Author:</p>{{ form.author }}
-        </div>
-        <div>
-          <p>Book Genre:</p>{{ form.genre }}
-        </div>
-        <div>
-          <p>Book Publisher:</p>{{ form.publisher }}
-        </div>
-        <div>
-          <p>Book Release Year:</p>{{ form.release_year }}
-        </div>
-        <div>
-          <br>
-          <button type="submit">Submit</button>
-        </div>
-      </div>
+      {% csrf_token %} {{ form.as_p }}
+      <input type="submit" on value="Submit" />
     </form>
   </body>
 </html>

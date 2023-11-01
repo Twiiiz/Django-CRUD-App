@@ -14,7 +14,7 @@ def manage_form(request):
       try:
         form.save()
         have_records = True
-        return redirect("/records")
+        return redirect("/")
       except ValidationError:
         messages.error(request, "Invalid year. Please enter a year between 0 and the current year.")
       except:
@@ -47,7 +47,12 @@ def update_record(request, id):
      try:
       book.full_clean()
       book.save()
-      return redirect("/records")
+      return redirect("/")
      except ValidationError:
       messages.error(request, "Invalid year. Please enter a year between 0 and the current year.")
    return render(request, 'edit_book.html', {'book': book})
+
+def delete_record(request, id):  
+    book = Book.objects.get(id=id)  
+    book.delete()  
+    return redirect("/")

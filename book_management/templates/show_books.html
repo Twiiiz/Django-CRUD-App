@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>All Book Records</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/show_books.css' %}">
   </head>
   <body>
+    <h1>All Book records</h1>
     {% if records == True %}
     <table>
       <thead>
@@ -16,7 +19,7 @@
           <th>Book Genre</th>
           <th>Book Publisher</th>
           <th>Book Release Year</th>
-          <th>Action</th>
+          <th colspan='2'>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -30,6 +33,8 @@
           <td>{{ book.release_year }}</td>
           <td>
             <a href="edit/{{ book.id }}">Edit</a>
+          </td>
+          <td>
             <a href="delete/{{ book.id }}">Delete</a>
           </td>
         </tr>

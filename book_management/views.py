@@ -30,7 +30,7 @@ def show_records(request):
     have_records = False
   else:
     have_records = True
-  return render(request, 'show_records.html', {'books': books, 'records': have_records})
+  return render(request, 'show_books.html', {'books': books, 'records': have_records})
 
 def edit_record(request, id):
   book = Book.objects.get(id=id)

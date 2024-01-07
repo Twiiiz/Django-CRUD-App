@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit</title>
+    <title>Update Book record</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/update_book.css' %}">
   </head>
   <body>
     <form method="POST" action="/update/{{ book.id }}">
       {% csrf_token %}
-      <div>
-        <p>Update Book Details</p>
-      </div>
+      <h1>Update Book Details</h1>
       <div>
         <p>Book Name:</p>
         <input type="text" name="book_name" value="{{ book.name }}" />

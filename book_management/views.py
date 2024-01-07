@@ -32,10 +32,6 @@ def show_records(request):
     have_records = True
   return render(request, 'show_books.html', {'books': books, 'records': have_records})
 
-def edit_record(request, id):
-  book = Book.objects.get(id=id)
-  return render(request, 'edit_book.html', {'book': book})
-
 def update_record(request, id):
    book = Book.objects.get(id=id)
    if request.method == 'POST':
@@ -47,10 +43,13 @@ def update_record(request, id):
      try:
       book.full_clean()
       book.save()
-      return redirect("/")
+      response = redirect("/")
      except ValidationError:
       messages.error(request, "Invalid year. Please enter a year between 0 and the current year.")
-   return render(request, 'edit_book.html', {'book': book})
+   else:
+    book = Book.objects.get(id=id)
+    response =  render(request, 'update_book.html', {'book': book})
+   return response
 
 def delete_record(request, id):  
     book = Book.objects.get(id=id)  
